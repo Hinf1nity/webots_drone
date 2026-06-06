@@ -1,0 +1,39 @@
+services:
+  padoru_webots_jazzy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: padoru_webots_jazzy
+    container_name: padoru_webots_dev_env
+    gpus: all
+    network_mode: host
+    ipc: host
+    privileged: true
+    user: "ubuntu"
+    working_dir: /home/ubuntu/ros_ws
+    tty: true
+    stdin_open: true
+    command: bash
+    environment:
+      ROS_DOMAIN_ID: 0
+      DISPLAY: ${DISPLAY} # Forward X11 display
+      NVIDIA_DRIVER_CAPABILITIES: all #compute,utility,graphics # Allow GPU access
+      NVIDIA_VISIBLE_DEVICES: all # Expose all GPUs
+      QT_X11_NO_MITSHM: 1
+      WBOTS_HOME: /usr/local/webots
+    devices:
+      - "/dev/dri:/dev/dri" # Allow OpenGL rendering
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $PWD:/home/ubuntu/ros_ws
+      - webots_config:/home/ubuntu/.config/Cyberbotics
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu, utility ]
+
+volumes:
+  webots_config:

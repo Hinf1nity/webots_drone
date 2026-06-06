@@ -1,0 +1,5 @@
+<robot name="Mavic2Pro">
+    <webots>
+        <plugin type="padoru_webots.drone_driver.DroneDriver" />
+    </webots>
+</robot>

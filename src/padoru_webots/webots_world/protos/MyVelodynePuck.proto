@@ -1,0 +1,20 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/released/projects/devices/velodyne/protos/VelodynePuck.proto"
+
+PROTO MyVelodynePuck [
+    field SFVec3f    translation    0 0 0
+    field SFRotation rotation       0 0 1 0
+    field SFString   name           "Velodyne VLP-16"
+    field SFString   version        "Puck"
+    field SFBool     enablePhysics  TRUE
+]
+{
+  VelodynePuck {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    version IS version
+    enablePhysics IS enablePhysics
+  }
+}
