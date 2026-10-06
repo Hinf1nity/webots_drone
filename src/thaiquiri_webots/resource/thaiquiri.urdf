@@ -1,0 +1,319 @@
+<?xml version="1.0"?>
+<robot name="/home/ubuntu/ros_ws/src/thaiquiri_webots/resource/thaiquiri.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0.155 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.36 0.25 0.53"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0.155 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.36 0.25 0.53"/>
+      </geometry>
+    </collision>
+Group {
+    children 
+  }Group {
+    children 
+  }Group {
+    children 
+  }Group {
+    children 
+  }  </link>
+  <link name="motor_front_left_bb">
+  </link>
+  <joint name="base_link_motor_front_left_bb_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="motor_front_left_bb"/>
+    <origin xyz="0.295 0.346 0.297" rpy="-1.570795 0 0"/>
+  </joint>
+  <link name="motor_front_right_bb">
+  </link>
+  <joint name="base_link_motor_front_right_bb_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="motor_front_right_bb"/>
+    <origin xyz="-0.297 0.346 0.297" rpy="-1.570795 0 0"/>
+  </joint>
+  <link name="motor_2_bb">
+  </link>
+  <joint name="base_link_motor_2_bb_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="motor_2_bb"/>
+    <origin xyz="-0.297 0.346 -0.295" rpy="-1.570795 0 0"/>
+  </joint>
+  <link name="motor_1_bb">
+  </link>
+  <joint name="base_link_motor_1_bb_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="motor_1_bb"/>
+    <origin xyz="0.295 0.346 -0.295" rpy="-1.570795 0 0"/>
+  </joint>
+  <link name="solid">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid"/>
+    <origin xyz="0.2975 0.38 0.295" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_0">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_0_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_0"/>
+    <origin xyz="0.2975 0.38 0.295" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_1_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_1"/>
+    <origin xyz="-0.2975 0.38 0.295" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_2_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_2"/>
+    <origin xyz="-0.2975 0.38 0.295" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_3">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_3_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_3"/>
+    <origin xyz="0.2975 0.38 -0.295" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_4">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_4_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_4"/>
+    <origin xyz="0.2975 0.38 -0.295" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_5">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_5_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_5"/>
+    <origin xyz="-0.2975 0.38 -0.295" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_6">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.217" length="0.005"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_solid_6_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_6"/>
+    <origin xyz="-0.2975 0.38 -0.295" rpy="0 0 0"/>
+  </joint>
+  <link name="lidar_livox">
+    <visual>
+      <origin xyz="0.0005 0.0045 0.023" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.055" length="0.036"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0005 0.0045 0.023" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.055" length="0.036"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_lidar_livox_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_livox"/>
+    <origin xyz="0 0.43 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="ZED_X_Mini_camera">
+    <visual>
+      <origin xyz="0 0.004 -0.029" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.093 0.028 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0.004 -0.029" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.093 0.028 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_ZED_X_Mini_camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ZED_X_Mini_camera"/>
+    <origin xyz="0 0.38 0.14" rpy="0 0 0"/>
+  </joint>
+  <link name="camera_right">
+  </link>
+  <joint name="ZED_X_Mini_camera_camera_right_joint" type="fixed">
+    <parent link="ZED_X_Mini_camera"/>
+    <child link="camera_right"/>
+    <origin xyz="0.025 0.003 0.003" rpy="-1.570796 0 -1.570796"/>
+  </joint>
+  <link name="camera_left">
+  </link>
+  <joint name="ZED_X_Mini_camera_camera_left_joint" type="fixed">
+    <parent link="ZED_X_Mini_camera"/>
+    <child link="camera_left"/>
+    <origin xyz="-0.025 0.003 0" rpy="-1.570796 0 -1.570796"/>
+  </joint>
+  <link name="cube_orange">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.03 0.03"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.03 0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_cube_orange_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="cube_orange"/>
+    <origin xyz="0.093 0.325 0.042" rpy="0 0 0"/>
+  </joint>
+  <link name="battery">
+  </link>
+  <joint name="base_link_battery_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="battery"/>
+    <origin xyz="0 0.262 -0.025" rpy="0 0 0"/>
+  </joint>
+  <link name="antenna">
+    <visual>
+      <origin xyz="0 0.07 -0.027" rpy="-1.570795 0 0"/>
+      <geometry>
+        <cylinder radius="0.005" length="0.12"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0.07 -0.027" rpy="-1.570795 0 0"/>
+      <geometry>
+        <cylinder radius="0.005" length="0.12"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <box size="0.017 0.019 0.075"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.017 0.019 0.075"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_antenna_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="antenna"/>
+    <origin xyz="0.0005 0.3785 -0.0988" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_7">
+  </link>
+  <joint name="base_link_solid_7_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_7"/>
+    <origin xyz="-0.03 0.322 0" rpy="0 0 0"/>
+  </joint>
+</robot>
