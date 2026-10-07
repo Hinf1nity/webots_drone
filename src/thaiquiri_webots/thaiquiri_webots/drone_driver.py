@@ -1,6 +1,6 @@
 import rclpy
 from geometry_msgs.msg import Twist
-from nav_msgs.msg import Odometry
+from webots_ros2_msgs.msg import FloatStamped
 from scipy.spatial.transform import Rotation as R
 import numpy as np
 from controller import Supervisor
@@ -15,10 +15,7 @@ class DroneDriver:
         # Devices
         self.__timestep = int(self.__robot.getBasicTimeStep())
         self.__devices = {
-            'camera_left': self.__robot.getDevice('camera_left'),
-            'camera_right': self.__robot.getDevice('camera_right'),
-            'lidar': self.__robot.getDevice('lidar_livox'),
-            'imu': self.__robot.getDevice('imu_livox')
+            'altimeter': self.__robot.getDevice('altimeter_cube'),
         }
 
         # 1. Inicializar los 4 motores
@@ -39,19 +36,22 @@ class DroneDriver:
         sleep(1)  # Esperar un momento para que los motores se estabilicen
 
         # 2. Sensores (activar los que se necesiten)
+        self.__devices['altimeter'].enable(self.__timestep)
         # self.__devices['camera_left'].enable(self.__timestep)
         # self.__devices['camera_right'].enable(self.__timestep)
         # self.__devices['lidar'].enable(self.__timestep)
 
-        # 4. Comando de velocidad objetivo
-        self.__target_twist = Twist()
+        self.altimeter_msg = FloatStamped()
 
         # 6. Nodo ROS 2
         rclpy.init(args=None)
         self.__node = rclpy.create_node('thaiquiri_driver')
-
-    def __cmd_vel_callback(self, twist):
-        self.__target_twist = twist
+        self.__altimeter_pub = self.__node.create_publisher(
+            FloatStamped, '/drone/altimeter_cube', 10)
 
     def step(self):
         rclpy.spin_once(self.__node, timeout_sec=0)
+        self.altimeter_msg.header.stamp = self.__node.get_clock().now().to_msg()
+        self.altimeter_msg.header.frame_id = 'altimeter_cube'
+        self.altimeter_msg.data = self.__devices['altimeter'].getValue()
+        self.__altimeter_pub.publish(self.altimeter_msg)

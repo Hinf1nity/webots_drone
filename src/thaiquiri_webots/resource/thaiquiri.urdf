@@ -6,11 +6,40 @@
             <enabled>True</enabled>
             <updateRate>10</updateRate>
             <alwaysOn>True</alwaysOn>
-            <topicName>/drone/imu_livox</topicName>
-            <inertialUnitName>imu_livox</inertialUnitName>
+            <topicName>/drone/livox/gyro</topicName>
+            <gyroName>gyro_livox</gyroName>
         </plugin>
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <enabled>True</enabled>
+            <updateRate>10</updateRate>
+            <alwaysOn>True</alwaysOn>
+            <topicName>/drone/livox/acc</topicName>
+            <accelerometerName>accelerometer_livox</accelerometerName>
+        </plugin>
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <enabled>True</enabled>
+            <updateRate>10</updateRate>
+            <alwaysOn>True</alwaysOn>
+            <topicName>/drone/cube/gyro</topicName>
+            <gyroName>gyro_cube</gyroName>
+        </plugin>
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <enabled>True</enabled>
+            <updateRate>10</updateRate>
+            <alwaysOn>True</alwaysOn>
+            <topicName>/drone/cube/acc</topicName>
+            <accelerometerName>accelerometer_cube</accelerometerName>
+        </plugin>
+          <device reference="altimeter_cube" type="Altimeter">
+            <ros>
+                <enabled>true</enabled>
+                <updateRate>10</updateRate>
+                <topicName>/altimeter_cube</topicName>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
   </webots>
-  <device reference="lidar_livox" type="Lidar">
+  <!-- <device reference="lidar_livox" type="Lidar">
       <ros>
           <enabled>true</enabled>
           <updateRate>10</updateRate>
@@ -34,6 +63,14 @@
           <alwaysOn>true</alwaysOn>
       </ros>
   </device>
+  <device reference="compass_cube" type="Compass">
+      <ros>
+          <enabled>true</enabled>
+          <updateRate>10</updateRate>
+          <topicName>/compass_cube</topicName>
+          <alwaysOn>true</alwaysOn>
+      </ros>
+  </device> -->
   <link name="base_link">
     <visual>
       <origin xyz="0 0.155 0" rpy="0 0 0"/>
@@ -255,11 +292,18 @@ Group {
     <child link="lidar_livox"/>
     <origin xyz="0 0.43 0" rpy="1.5708 0 0"/>
   </joint>
-  <link name="imu_livox">
+  <link name="gyro_livox">
   </link>
-  <joint name="lidar_livox_imu_livox_joint" type="fixed">
+  <joint name="lidar_livox_gyro_livox_joint" type="fixed">
     <parent link="lidar_livox"/>
-    <child link="imu_livox"/>
+    <child link="gyro_livox"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="accelerometer_livox">
+  </link>
+  <joint name="lidar_livox_accelerometer_livox_joint" type="fixed">
+    <parent link="lidar_livox"/>
+    <child link="accelerometer_livox"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
   <link name="ZED_X_Mini_camera">
@@ -313,6 +357,34 @@ Group {
     <parent link="base_link"/>
     <child link="cube_orange"/>
     <origin xyz="0.093 0.325 0.042" rpy="0 0 0"/>
+  </joint>
+  <link name="compass_cube">
+  </link>
+  <joint name="cube_orange_compass_cube_joint" type="fixed">
+    <parent link="cube_orange"/>
+    <child link="compass_cube"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="altimeter_cube">
+  </link>
+  <joint name="cube_orange_altimeter_cube_joint" type="fixed">
+    <parent link="cube_orange"/>
+    <child link="altimeter_cube"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="accelerometer_cube">
+  </link>
+  <joint name="cube_orange_accelerometer_cube_joint" type="fixed">
+    <parent link="cube_orange"/>
+    <child link="accelerometer_cube"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="gyro_cube">
+  </link>
+  <joint name="cube_orange_gyro_cube_joint" type="fixed">
+    <parent link="cube_orange"/>
+    <child link="gyro_cube"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
   <link name="battery">
   </link>

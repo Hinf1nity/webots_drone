@@ -112,6 +112,20 @@ PROTO thaiquiri [
     }
     DEF cube_orange Solid {
       translation 0.093 0.325 0.042
+      children [
+        DEF gyro_cube Gyro {
+          name "gyro_cube"
+        }
+        DEF accelerometer_cube Accelerometer {
+          name "accelerometer_cube"
+        }
+        DEF altimeter_cube Altimeter {
+          name "altimeter_cube"
+        }
+        DEF compass_cube Compass {
+          name "compass_cube"
+        }
+      ]
       name "cube_orange"
       boundingObject Pose {
         children [
@@ -176,8 +190,11 @@ PROTO thaiquiri [
       translation 0 0.43 0
       rotation 1 0 0 1.5708
       children [
-        DEF imu_livox InertialUnit {
-          name "imu_livox"
+        DEF accelerometer_livox Accelerometer {
+          name "accelerometer_livox"
+        }
+        DEF gyro_livox Gyro {
+          name "gyro_livox"
         }
       ]
       name "lidar_livox"
