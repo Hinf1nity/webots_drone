@@ -71,6 +71,7 @@
           <alwaysOn>true</alwaysOn>
       </ros>
   </device> -->
+  <link name="base_footprint"/>
   <link name="base_link">
     <visual>
       <origin xyz="0 0.155 0" rpy="0 0 0"/>
@@ -84,15 +85,12 @@
         <box size="0.36 0.25 0.53"/>
       </geometry>
     </collision>
-Group {
-    children 
-  }Group {
-    children 
-  }Group {
-    children 
-  }Group {
-    children 
-  }  </link>
+  </link>
+  <joint name="base_footprint_to_base_link" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="1.5708 0 1.5708"/>
+  </joint>
   <link name="motor_front_left_bb">
   </link>
   <joint name="base_link_motor_front_left_bb_joint" type="fixed">
@@ -330,14 +328,16 @@ Group {
   <joint name="ZED_X_Mini_camera_camera_right_joint" type="fixed">
     <parent link="ZED_X_Mini_camera"/>
     <child link="camera_right"/>
-    <origin xyz="0.025 0.003 0.003" rpy="-0.523793 -1.570792 -1.047006"/>
+    <!-- <origin xyz="0.025 0.003 0.003" rpy="-0.523793 -1.570792 -1.047006"/> -->
+    <origin xyz="0.025 0.003 0.003" rpy="0 0 0"/>
   </joint>
   <link name="camera_left">
   </link>
   <joint name="ZED_X_Mini_camera_camera_left_joint" type="fixed">
     <parent link="ZED_X_Mini_camera"/>
     <child link="camera_left"/>
-    <origin xyz="-0.025 0.003 0" rpy="-0.523793 -1.570792 -1.047006"/>
+    <!-- <origin xyz="-0.025 0.003 0" rpy="-0.523793 -1.570792 -1.047006"/> -->
+    <origin xyz="-0.025 0.003 0" rpy="0 0 0"/>
   </joint>
   <link name="cube_orange">
     <visual>

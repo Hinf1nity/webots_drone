@@ -14,7 +14,7 @@ from webots_ros2_driver.wait_for_controller_connection import WaitForControllerC
 
 
 def generate_launch_description():
-    # use_rtabmap = LaunchConfiguration('rtabmap', default=False)
+    use_rtabmap = LaunchConfiguration('rtabmap', default=True)
 
     package_dir = get_package_share_directory('thaiquiri_webots')
     robot_description_path = os.path.join(
@@ -28,18 +28,7 @@ def generate_launch_description():
         executable='static_transform_publisher',
         name='footprint',
         output='screen',
-        arguments=['0', '0', '0', '0', '0', '1.5708', 'world', 'base_link']
-    )
-
-    camera_frame_publisher = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        name='camera_frame_publisher',
-        output='screen',
-        arguments=['0', '0', '0', '1.5708', '0',
-                   '1.5708', 'base_link', 'ZED_X_Mini_camera']
-        # arguments=['0', '0', '0', '0', '0',
-        #            '0', 'base_link', 'ZED_X_Mini_camera']
+        arguments=['0', '0', '0', '0', '0', '0', 'world', 'base_footprint']
     )
 
     robot_state_publisher = Node(
@@ -58,25 +47,41 @@ def generate_launch_description():
     #     parameters=[{'robot_description': robot_description}]
     # )
 
-    # rtabmap_launch_path = get_package_share_directory('rtabmap_launch')
-    # rtabmap = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(
-    #         os.path.join(rtabmap_launch_path, 'launch', 'rtabmap.launch.py')
-    #     ),
-    #     launch_arguments={
-    #         'rtabmap_args': '--delete_db_on_start',
-    #         'frame_id': 'base_link',
-    #         'rgb_topic': '/drone/left/image_raw',
-    #         'depth_topic': '/drone/points2',
-    #         'camera_info_topic': '/drone/camera_left/camera_info',
-    #         'approx_sync': 'True',
-    #         'rviz': 'False',
-    #         'visual_odometry': 'False',
-    #         'odom_topic': '/odom',
-    #         "queue_size": "20",
-    #     }.items(),
-    #     condition=IfCondition(use_rtabmap)
-    # )
+    rtabmap_launch_path = get_package_share_directory('rtabmap_launch')
+    rtabmap = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(rtabmap_launch_path, 'launch', 'rtabmap.launch.py')
+        ),
+        launch_arguments={
+            'rtabmap_args': '--delete_db_on_start',
+
+            'stereo': 'true',
+            'left_image_topic': '/drone/left/image_rect_color',
+            'right_image_topic': '/drone/right/image_rect',
+            'left_camera_info_topic': '/drone/left/camera_info',
+            'right_camera_info_topic': '/drone/right/camera_info',
+
+            'subscribe_scan_cloud': 'true',
+            'scan_cloud_topic': '/drone/lidar_livox/point_cloud',
+
+            'qos': '2',
+            'qos_scan': '2',
+
+            'visual_odometry': 'false',
+            'icp_odometry': 'true',
+
+            'frame_id': 'base_footprint',
+            'odom_frame_id': 'odom',
+            'map_frame_id': 'map',
+
+            'approx_sync': 'True',
+            'approx_sinc_max_interval': '0.05',
+            'rviz': 'False',
+
+            "queue_size": "20",
+        }.items(),
+        condition=IfCondition(use_rtabmap)
+    )
 
     webots = WebotsLauncher(
         world=os.path.join(package_dir, 'webots_world',
@@ -107,32 +112,32 @@ def generate_launch_description():
     )
 
     stereo_proc_share = get_package_share_directory('stereo_image_proc')
-    stereo_launch_path = os.path.join(
-        stereo_proc_share, 'launch', 'stereo_image_proc.launch.py')
-    stereo_proc_group = GroupAction(
-        actions=[
-            # Incluir el archivo de lanzamiento oficial con los argumentos de sub-namespace que espera
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(stereo_launch_path),
-                launch_arguments={
-                    'namespace': 'drone',
-                    'approximate_sync': 'True',
-                    'approximate_sync_tolerance_seconds': '0.05',
-                }.items()
-            )
-        ]
+    stereo_proc = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(
+            stereo_proc_share, 'launch', 'stereo_image_proc.launch.py')),
+        launch_arguments={
+            'namespace': 'drone',
+            'approximate_sync': 'True',
+            'approximate_sync_tolerance_seconds': '0.05',
+            'disparity_only': 'True',
+        }.items()
     )
+
+    waiting_nodes = WaitForControllerConnection(
+        target_driver=drone_driver,
+        nodes_to_start=[rtabmap]
+    )
+
     return LaunchDescription([
         webots,
         drone_driver,
         footprint,
-        camera_frame_publisher,
         robot_state_publisher,
         fix_camera_info,
         bgra_to_bgr_node,
-        stereo_proc_group,
+        stereo_proc,
         # joint_state_publisher,
-        # waiting_nodes,
+        waiting_nodes,
         launch.actions.RegisterEventHandler(
             event_handler=launch.event_handlers.OnProcessExit(
                 target_action=webots,
