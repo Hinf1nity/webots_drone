@@ -18,6 +18,7 @@ class DroneDriver:
             'camera_left': self.__robot.getDevice('camera_left'),
             'camera_right': self.__robot.getDevice('camera_right'),
             'lidar': self.__robot.getDevice('lidar_livox'),
+            'imu': self.__robot.getDevice('imu_livox')
         }
 
         # 1. Inicializar los 4 motores
@@ -38,9 +39,9 @@ class DroneDriver:
         sleep(1)  # Esperar un momento para que los motores se estabilicen
 
         # 2. Sensores (activar los que se necesiten)
-        self.__devices['camera_left'].enable(self.__timestep)
-        self.__devices['camera_right'].enable(self.__timestep)
-        self.__devices['lidar'].enable(self.__timestep)
+        # self.__devices['camera_left'].enable(self.__timestep)
+        # self.__devices['camera_right'].enable(self.__timestep)
+        # self.__devices['lidar'].enable(self.__timestep)
 
         # 4. Comando de velocidad objetivo
         self.__target_twist = Twist()

@@ -1,5 +1,39 @@
 <?xml version="1.0"?>
-<robot name="/home/ubuntu/ros_ws/src/thaiquiri_webots/resource/thaiquiri.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="thaiquiri" xmlns:xacro="http://ros.org/wiki/xacro">
+  <webots>
+        <plugin type="thaiquiri_webots.drone_driver.DroneDriver" />
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <enabled>True</enabled>
+            <updateRate>10</updateRate>
+            <alwaysOn>True</alwaysOn>
+            <topicName>/drone/imu_livox</topicName>
+            <inertialUnitName>imu_livox</inertialUnitName>
+        </plugin>
+  </webots>
+  <device reference="lidar_livox" type="Lidar">
+      <ros>
+          <enabled>true</enabled>
+          <updateRate>10</updateRate>
+          <topicName>/scan</topicName>
+          <alwaysOn>true</alwaysOn>
+      </ros>
+  </device>
+  <device reference="camera_right" type="Camera">
+      <ros>
+          <enabled>true</enabled>
+          <updateRate>10</updateRate>
+          <topicName>/camera_right</topicName>
+          <alwaysOn>true</alwaysOn>
+      </ros>
+  </device>
+  <device reference="camera_left" type="Camera">
+      <ros>
+          <enabled>true</enabled>
+          <updateRate>10</updateRate>
+          <topicName>/camera_left</topicName>
+          <alwaysOn>true</alwaysOn>
+      </ros>
+  </device>
   <link name="base_link">
     <visual>
       <origin xyz="0 0.155 0" rpy="0 0 0"/>
@@ -221,6 +255,13 @@ Group {
     <child link="lidar_livox"/>
     <origin xyz="0 0.43 0" rpy="1.5708 0 0"/>
   </joint>
+  <link name="imu_livox">
+  </link>
+  <joint name="lidar_livox_imu_livox_joint" type="fixed">
+    <parent link="lidar_livox"/>
+    <child link="imu_livox"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
   <link name="ZED_X_Mini_camera">
     <visual>
       <origin xyz="0 0.004 -0.029" rpy="0 0 0"/>
@@ -245,14 +286,14 @@ Group {
   <joint name="ZED_X_Mini_camera_camera_right_joint" type="fixed">
     <parent link="ZED_X_Mini_camera"/>
     <child link="camera_right"/>
-    <origin xyz="0.025 0.003 0.003" rpy="-1.570796 0 -1.570796"/>
+    <origin xyz="0.025 0.003 0.003" rpy="-0.523793 -1.570792 -1.047006"/>
   </joint>
   <link name="camera_left">
   </link>
   <joint name="ZED_X_Mini_camera_camera_left_joint" type="fixed">
     <parent link="ZED_X_Mini_camera"/>
     <child link="camera_left"/>
-    <origin xyz="-0.025 0.003 0" rpy="-1.570796 0 -1.570796"/>
+    <origin xyz="-0.025 0.003 0" rpy="-0.523793 -1.570792 -1.047006"/>
   </joint>
   <link name="cube_orange">
     <visual>

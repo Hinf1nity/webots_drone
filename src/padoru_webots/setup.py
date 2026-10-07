@@ -6,8 +6,6 @@ data_files.append(('share/ament_index/resource_index/packages',
                    ['resource/' + package_name]))
 data_files.append(('share/' + package_name + '/launch',
                   ['launch/drone_launch.py']))
-data_files.append(
-    ('share/' + package_name + '/worlds', ['worlds/mavic_2_pro.wbt']))
 data_files.append(('share/' + package_name + '/webots_world/worlds',
                   ['webots_world/worlds/test.wbt']))
 data_files.append(('share/' + package_name + '/webots_world/protos',

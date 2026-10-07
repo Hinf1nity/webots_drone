@@ -139,23 +139,23 @@ PROTO thaiquiri [
       children [
         DEF camera_left Camera {
           translation -0.025 0.003 0
+          rotation 0.5773509358560258 -0.577349935856137 0.577349935856137 2.09439
           name "camera_left"
           fieldOfView 1.91986
           width 1280
           height 720
           near 0.1
           far 20
-          noise 0.03
         }
         DEF camera_right Camera {
           translation 0.025 0.003 0.003
+          rotation 0.5773509358560258 -0.577349935856137 0.577349935856137 2.09439
           name "camera_right"
           fieldOfView 1.91986
           width 1280
           height 720
           near 0.1
           far 20
-          noise 0.03
         }
       ]
       name "ZED_X_Mini_camera"
@@ -175,6 +175,11 @@ PROTO thaiquiri [
     DEF lidar_livox Lidar {
       translation 0 0.43 0
       rotation 1 0 0 1.5708
+      children [
+        DEF imu_livox InertialUnit {
+          name "imu_livox"
+        }
+      ]
       name "lidar_livox"
       boundingObject Pose {
         translation 0.0005 0.0045 0.023

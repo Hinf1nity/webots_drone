@@ -28,7 +28,7 @@ def package_files(source_dir, target_dir):
 data_files = [
     ('share/ament_index/resource_index/packages',
      ['resource/' + package_name]),
-    # ('share/' + package_name + '/launch', ['launch/drone_launch.py']),
+    ('share/' + package_name + '/launch', ['launch/drone_launch.py']),
     ('share/' + package_name + '/webots_world/worlds',
      ['webots_world/worlds/mine_thaiquiri.wbt']),
     ('share/' + package_name + '/webots_world/protos',
@@ -59,7 +59,9 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            # 'drone_driver = thaiquiri_webots.drone_driver:main',
+            'drone_driver = thaiquiri_webots.drone_driver:main',
+            'bgra_to_bgr = thaiquiri_webots.bgra_to_bgr:main',
+            'fix_camera_info = thaiquiri_webots.fix_camera_info:main',
             # 'teleop_drone = thaiquiri_webots.teleop_drone:main',
         ],
     },
