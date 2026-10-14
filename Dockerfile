@@ -73,6 +73,7 @@ USER $USERNAME
 # Configuración del entorno en .bashrc
 RUN echo "source /opt/ros/jazzy/setup.bash" >> /home/$USERNAME/.bashrc && \
     echo "export ROS_DOMAIN_ID=0" >> /home/$USERNAME/.bashrc && \
+    echo "export ROS_LOCALHOST_ONLY=0" >> /home/$USERNAME/.bashrc && \
     echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> /home/$USERNAME/.bashrc && \
     echo "alias inst_r='source install/setup.bash'" >> /home/$USERNAME/.bashrc && \
     echo "export WEBOTS_HOME=/usr/local/webots" >> /home/$USERNAME/.bashrc

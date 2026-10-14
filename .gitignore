@@ -3,3 +3,9 @@ install/
 log/
 needletail_aerial_unit-main/
 my_package/
+*.pdf
+*.gv
+.vscode/
+.venv/
+__pycache__/
+experiment_data/

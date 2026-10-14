@@ -1,0 +1,275 @@
+{
+  "metadata": {
+    "scenario": "low_light",
+    "started_utc": "2026-10-13T21:19:38.455086+00:00",
+    "source_sha256": "987880d533a5bdb34de4de2630e296dbe6530bce7321204e0ce47bfdedae405e",
+    "git_revision": "e474ed05f4b7305d4c5fcadc6c3e88d9a82ff12e",
+    "git_dirty": true,
+    "criteria_sha256": "ce1070a2d0a1897f31081633396e5e732ede265c93c57be29c8471141eb6a29d",
+    "world": "cerro_rico.wbt",
+    "random_seed": 42,
+    "ros_domain_id": 73,
+    "webots": "Webots version: R2025a",
+    "ros": "jazzy",
+    "implementation_sha256": {
+      "scripts/export_cerro_rico.py": "c9e069d0f788e39496b379b13cb5c8a6008c2fbab2fd406c11b359e3479fecc4",
+      "scripts/summarize_sil.py": "ba206cd21266a56aa84705208fbe576b37424c3357970fa770c6921fb451599e",
+      "scripts/run_sil.py": "684900d363af345351c33f622b796f554ed85b6f7da05927134b40514273793e",
+      "src/thaiquiri_webots/thaiquiri_webots/webots_vehicle.py": "95a38eaeb4bf483a67d6849349fdaaf7167499a94683b3877101c686769bb563",
+      "src/thaiquiri_webots/thaiquiri_webots/imu_merger_node.py": "ed19c8fcdd5e008b949bf1e2e46ab86d0ee487d67640abc4a4ec7eceeb87fcb9",
+      "src/thaiquiri_webots/thaiquiri_webots/fix_camera_info.py": "7d3feff4d8bb8134dac4d71e792a8ba93b1c34e12b891d5ca19145d2c9314965",
+      "src/thaiquiri_webots/thaiquiri_webots/drone_driver_3.py": "690ad444d4188bd7dc5ece77d871cbf669551cc20e651db603649fe791e40cd3",
+      "src/thaiquiri_webots/thaiquiri_webots/sil_metrics.py": "ad19fb0a689b7f89c426852c448d074efd142ef76a7419316d45257f60c95b32",
+      "src/thaiquiri_webots/thaiquiri_webots/odom_to_ardupilot.py": "dbcbc8e00c7572b06ce01e0ca03274a234374bc922387f38b21f3c348080090b",
+      "src/thaiquiri_webots/thaiquiri_webots/sil_observer.py": "9ee6e019ec0c8de00e0c4e2336412a456dcffefda5275ae4992db39b24c51ca2",
+      "src/thaiquiri_webots/thaiquiri_webots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/thaiquiri_webots/thaiquiri_webots/gps_pose_publisher.py": "1bbb8ad83113d30e20290f44eb6d9b6307ed484557c23cee36fece1f8ff8b4b9",
+      "src/thaiquiri_webots/thaiquiri_webots/drone_driver.py": "5dfd84f9237c159d68f28870a4479feba103ecf34f96d31fb67b1162668605e1",
+      "src/thaiquiri_webots/thaiquiri_webots/teleop_drone.py": "30bc565be6e977029ce5719505636f3f5ab0a2c3d42ced2ba696e3fc3af58b05",
+      "src/thaiquiri_webots/thaiquiri_webots/bgra_to_bgr.py": "1289358a44f2f7d837df3a9796b9fbd83ffa8bffc50192273130b24025b2f08b",
+      "src/thaiquiri_webots/launch/drone_launch.py": "6d2cd0ee0ab98cdcb5155619edd89e7fae0ac3f5fbfee639c6575303b76a7b3e",
+      "src/thaiquiri_webots/resource/thaiquiri.urdf": "dc2344062b8087bc589b494902aa190621daffb601fcdd3ec69f4fb3337e75e1",
+      "src/thaiquiri_webots/webots_world/protos/CerroRico.proto": "062bea175f4117458556ea97549feea19a4415d9d9dae4a303c408ef321182ae",
+      "src/thaiquiri_webots/webots_world/protos/thaiquiri.proto": "0c95f62bfa0bf23428fdfc73dfce41d01a2c1d92e95e0252c354ef1e7b8484bd",
+      "src/thaiquiri_webots/webots_world/worlds/cerro_rico.wbt": "9497d9e53a17ad789bb5a59a7767d7adf2d7898e67788c08545323aec995c8d4"
+    },
+    "execution_error": null
+  },
+  "criteria": {
+    "version": 1,
+    "scope": "Cerro Rico entrance corridor; active Python flight controller + ROS Jazzy stereo/LiDAR/IMU + RTAB-Map; no ArduPilot SITL",
+    "duration_sim_s": 130,
+    "route_forward_m": 3.0,
+    "target_altitude_m": 1.15,
+    "altitude_rmse_max_m": 0.1,
+    "attitude_error_rmse_max_deg": 5.0,
+    "tilt_max_deg": 15.0,
+    "motor_saturation_fraction_max": 0.01,
+    "airborne_contact_samples_max": 0,
+    "odometry_rmse_max_m": 0.3,
+    "odometry_end_drift_max_m": 0.3,
+    "route_progress_min_m": 2.5,
+    "route_return_error_max_m": 0.5,
+    "map_updates_min": 20,
+    "mapped_points_min": 1000,
+    "map_surface_p95_max_m": 0.5,
+    "imu_rate_min_hz": 20.0,
+    "camera_rate_min_hz": 5.0,
+    "lidar_rate_min_hz": 3.0,
+    "odometry_rate_min_hz": 3.0,
+    "camera_gray_mean_min": 10.0,
+    "camera_gray_std_min": 8.0,
+    "notes": "Engineering acceptance targets for this local trial, fixed before evaluation; not certification limits. Low-light is a stress case and may fail camera criteria. Map distance is to a sampled collision surface, not surveyed real-mine ground truth."
+  },
+  "metrics": {
+    "trajectory": {
+      "available": true,
+      "matched_samples": 341,
+      "excluded_samples": 0,
+      "position_rmse_m": 0.35609881938376925,
+      "position_p95_m": 0.6302058386274373,
+      "end_drift_m": 0.6108321296577317,
+      "truth_path_length_m": 18.70339240161213,
+      "end_drift_per_m": 0.03265889505719194,
+      "alignment": "first matched pose SE(3), no fitted scale/trajectory"
+    },
+    "altitude_error_m": {
+      "count": 2083,
+      "mean": 0.001459758677906411,
+      "rmse": 0.010045230626072217,
+      "p95_abs": 0.02550276393361963,
+      "max_abs": 0.0460728630609375
+    },
+    "attitude_error_deg": {
+      "count": 4166,
+      "mean": -0.043605962535730444,
+      "rmse": 2.040320598556225,
+      "p95_abs": 6.049653675648454,
+      "max_abs": 7.547836954454476
+    },
+    "tilt_deg": {
+      "count": 5000,
+      "mean": 0.028968397923074145,
+      "rmse": 2.5305031716980406,
+      "p95_abs": 7.218003672968965,
+      "max_abs": 9.889158427650015
+    },
+    "airborne_contact_samples": 0,
+    "motor_saturation_fraction": 0.0,
+    "clock_backwards": 0,
+    "sim_duration_s": 130.0,
+    "realtime_factor": 0.9159215028596759,
+    "startup_wall_s": 3.3723782679999204,
+    "running_realtime_factor": 0.9382136933671353,
+    "map_updates": 40,
+    "map_node_count": 40,
+    "mapped_points": 46330,
+    "frames": {
+      "/drone/left/image_rect_color": [
+        "camera_left"
+      ],
+      "/sil/ground_truth": [
+        "world"
+      ],
+      "/drone/lidar_livox/point_cloud": [
+        "lidar_livox"
+      ],
+      "/imu/data": [
+        "imu_link"
+      ],
+      "/drone/altimeter_cube": [
+        "altimeter_cube"
+      ],
+      "/drone/velocity": [
+        ""
+      ],
+      "/drone/odom": [
+        "odom"
+      ],
+      "/drone/cloud_map": [
+        "map"
+      ],
+      "/drone/mapData": [
+        "map"
+      ]
+    },
+    "rates_hz": {
+      "/clock": 125.00000000113644,
+      "/drone/left/image_rect_color": 116.23572623569201,
+      "/sil/ground_truth": 20.833333333333332,
+      "/sil/contact_count": 20.833333333333332,
+      "/drone/lidar_livox/point_cloud": 8.231351981351983,
+      "/imu/data": 76.44748327029386,
+      "/drone/altimeter_cube": 125.00000000113644,
+      "/drone/velocity": 125.00000000113644,
+      "/tf": 23.058870615630916,
+      "/drone/odom": 8.245863401122532,
+      "/drone/cloud_map": 0.8555133079847907,
+      "/drone/mapData": 0.9494715984147952
+    },
+    "camera_gray_mean": 8.468639322916667,
+    "camera_gray_std": 3.519003033427024,
+    "route_progress_m": 2.171143668525166,
+    "route_return_error_m": 1.3610918903042724,
+    "map_surface": {
+      "available": true,
+      "median_m": 0.13034080558828487,
+      "p95_m": 0.4145970213051936,
+      "method": "nearest sampled collision surface; first-pose alignment; includes launch-pad points",
+      "alignment": "first matched odometry pose and first map->odom transform; fixed for entire run"
+    }
+  },
+  "checks": {
+    "completed_duration": {
+      "pass": true,
+      "value": 130.0,
+      "min": 129.9
+    },
+    "clock_monotonic": {
+      "pass": true,
+      "value": 0,
+      "max": 0
+    },
+    "altitude": {
+      "pass": true,
+      "value": 0.010045230626072217,
+      "max": 0.1
+    },
+    "attitude": {
+      "pass": true,
+      "value": 2.040320598556225,
+      "max": 5.0
+    },
+    "tilt": {
+      "pass": true,
+      "value": 9.889158427650015,
+      "max": 15.0
+    },
+    "contacts": {
+      "pass": true,
+      "value": 0,
+      "max": 0
+    },
+    "motor_saturation": {
+      "pass": true,
+      "value": 0.0,
+      "max": 0.01
+    },
+    "odometry": {
+      "pass": false,
+      "value": 0.35609881938376925,
+      "max": 0.3
+    },
+    "odometry_end_drift": {
+      "pass": false,
+      "value": 0.6108321296577317,
+      "max": 0.3
+    },
+    "route_progress": {
+      "pass": false,
+      "value": 2.171143668525166,
+      "min": 2.5
+    },
+    "route_return": {
+      "pass": false,
+      "value": 1.3610918903042724,
+      "max": 0.5
+    },
+    "map_updates": {
+      "pass": true,
+      "value": 40,
+      "min": 20
+    },
+    "map_points": {
+      "pass": true,
+      "value": 46330,
+      "min": 1000
+    },
+    "map_surface": {
+      "pass": true,
+      "value": 0.4145970213051936,
+      "max": 0.5
+    },
+    "imu_rate": {
+      "pass": true,
+      "value": 76.44748327029386,
+      "min": 20.0
+    },
+    "camera_rate": {
+      "pass": true,
+      "value": 116.23572623569201,
+      "min": 5.0
+    },
+    "lidar_rate": {
+      "pass": true,
+      "value": 8.231351981351983,
+      "min": 3.0
+    },
+    "odometry_rate": {
+      "pass": true,
+      "value": 8.245863401122532,
+      "min": 3.0
+    },
+    "camera_exposure": {
+      "pass": false,
+      "value": 8.468639322916667,
+      "min": 10.0
+    },
+    "camera_contrast": {
+      "pass": false,
+      "value": 3.519003033427024,
+      "min": 8.0
+    }
+  },
+  "events": [
+    {
+      "time": 5.04,
+      "command": "altitude 1.05 m"
+    },
+    {
+      "time": 15.008,
+      "command": "altitude 1.15 m"
+    }
+  ],
+  "passed": false
+}
